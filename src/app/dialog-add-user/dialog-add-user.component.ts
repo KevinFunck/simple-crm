@@ -11,7 +11,7 @@ import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 export class DialogAddUserComponent {
   user = new User();
   birthDate!: Date;
-  firestore: Firestore = inject(Firestore)
+  firestore: Firestore = inject(Firestore);
   db;
   loading = false;
 
@@ -22,7 +22,6 @@ export class DialogAddUserComponent {
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
     console.log(this.user);
-
     this.loading =true;
     
     addDoc(this.db, this.user.toJSON()).then(() => {

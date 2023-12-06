@@ -26,7 +26,7 @@ export class DialogAddUserComponent {
     
     addDoc(this.db, this.user.toJSON()).then(() => {
       this.loading = false;
-      this.dialogRef.close()
+      this.dialogRef.close();
     })
   }
 

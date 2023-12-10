@@ -59,6 +59,7 @@ export class UserComponent {
   ngOnDestroy(){
     this.unsubList();
   }
+  
   openDialog() {
     this.dialog.open(DialogAddUserComponent)
   }

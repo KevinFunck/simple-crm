@@ -6,8 +6,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
-//import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
-//import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 
 @Component({
   selector: 'app-user-detail',

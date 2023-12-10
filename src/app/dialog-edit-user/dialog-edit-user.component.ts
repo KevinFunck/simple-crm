@@ -29,6 +29,7 @@ export class DialogEditUserComponent implements OnInit{
   }
 
   getSingleRef(){
+    console.log(this.user.id);
     return doc(collection(this.firestore, 'users'),this.user.id);
   }
 }

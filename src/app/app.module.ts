@@ -29,6 +29,7 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { NoteComponent } from './note/note.component';
 import { DialogAddNotesComponent } from './dialog-add-notes/dialog-add-notes.component';
 import { DialogNoteCardComponent } from './dialog-note-card/dialog-note-card.component';
+import { CalenderComponent } from './calender/calender.component';
 
 
 
@@ -45,7 +46,8 @@ import { DialogNoteCardComponent } from './dialog-note-card/dialog-note-card.com
     DialogEditAddressComponent,
     NoteComponent,
     DialogAddNotesComponent,
-    DialogNoteCardComponent
+    DialogNoteCardComponent,
+    CalenderComponent
   ],
   imports: [
     BrowserModule,

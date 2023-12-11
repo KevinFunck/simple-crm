@@ -21,6 +21,7 @@ export class DialogAddNotesComponent {
 
   saveNote() {
     addDoc(this.db, this.note.toJSON()).then(() => {
+      console.log(this.note.id);
       this.dialogRef.close();
     })
   }

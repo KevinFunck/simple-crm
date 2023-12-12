@@ -28,8 +28,8 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { NoteComponent } from './note/note.component';
 import { DialogAddNotesComponent } from './dialog-add-notes/dialog-add-notes.component';
-import { DialogNoteCardComponent } from './dialog-note-card/dialog-note-card.component';
 import { CalenderComponent } from './calender/calender.component';
+import { DialogAddMeetingComponent } from './dialog-add-meeting/dialog-add-meeting.component';
 
 
 
@@ -46,8 +46,8 @@ import { CalenderComponent } from './calender/calender.component';
     DialogEditAddressComponent,
     NoteComponent,
     DialogAddNotesComponent,
-    DialogNoteCardComponent,
-    CalenderComponent
+    DialogAddMeetingComponent,
+    CalenderComponent,
   ],
   imports: [
     BrowserModule,

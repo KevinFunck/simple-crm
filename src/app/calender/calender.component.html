@@ -1,4 +1,28 @@
 <mat-card class="demo-inline-calendar-card">
-    <mat-calendar></mat-calendar>
-  </mat-card>
-  <p></p>
+  <button class="add-user-btn" (click)="openDialog()" mat-fab color="primary" matTooltip="Add meeting">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <mat-calendar>
+    
+  </mat-calendar>
+</mat-card>
+<p></p>
+<h1>Meetings</h1>
+
+<mat-card>
+  <mat-card-content>
+    <table class="user-table">
+      <tr>
+        <th>Meeting</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

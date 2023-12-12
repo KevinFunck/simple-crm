@@ -1,7 +1,14 @@
-<mat-card class="example-card">
+<h1>Notes</h1>
+
+<mat-card *ngFor="let note of noteList" [routerLink]="[note.id]" class="example-card">
     <mat-card-header>
-        <mat-card-title>Notes</mat-card-title>
+        <mat-card-title-group>
+            <mat-card-title>{{note.title}}</mat-card-title>
+        </mat-card-title-group>
     </mat-card-header>
+    <mat-card-content>
+        {{note.description}}
+    </mat-card-content>
 </mat-card>
 
 <button (click)="openDialogNote()" class="add-note-btn" mat-fab color="primary" matTooltip="Add notes">

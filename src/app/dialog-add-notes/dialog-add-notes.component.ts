@@ -4,6 +4,7 @@ import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 
 
+
 @Component({
   selector: 'app-dialog-add-notes',
   templateUrl: './dialog-add-notes.component.html',
@@ -14,6 +15,7 @@ export class DialogAddNotesComponent {
   note = new Note;
   firestore: Firestore = inject(Firestore);
   db;
+  
 
   constructor(public dialogRef: MatDialogRef<DialogAddNotesComponent>) {
     this.db = collection(this.firestore, 'notes');
@@ -23,6 +25,7 @@ export class DialogAddNotesComponent {
     addDoc(this.db, this.note.toJSON()).then(() => {
       console.log(this.note.id);
       this.dialogRef.close();
+      
     })
   }
 }

@@ -3,24 +3,26 @@
     <mat-icon>add</mat-icon>
   </button>
 
-  <mat-calendar>
+  <mat-calendar [(selected)]="selectedDate">
     
   </mat-calendar>
 </mat-card>
-<p></p>
+<p>
+{{selectedDate}}
+</p>
 <h1>Meetings</h1>
 
 <mat-card>
   <mat-card-content>
     <table class="user-table">
-      <tr>
+      <tr >
         <th>Meeting</th>
         <th>Date</th>
         <th>Time</th>
       </tr>
-      <tr>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let meeting of meetingList" [routerLink]="[meeting.id]">
+        <td>{{meeting.meeting}}</td>
+        <td>{{meeting.date}}</td>
         <td></td>
       </tr>
     </table>

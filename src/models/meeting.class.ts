@@ -1,7 +1,7 @@
 export class Meeting {
     id?: string;
     meeting:string;
-    date:string;
+    date:number;
   
 
     constructor(obj?: any) {

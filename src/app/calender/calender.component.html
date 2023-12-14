@@ -3,12 +3,12 @@
     <mat-icon>add</mat-icon>
   </button>
 
-  <mat-calendar [(selected)]="selectedDate">
+  <mat-calendar >
     
   </mat-calendar>
 </mat-card>
 <p>
-{{selectedDate}}
+
 </p>
 <h1>Meetings</h1>
 
@@ -22,7 +22,7 @@
       </tr>
       <tr *ngFor="let meeting of meetingList" [routerLink]="[meeting.id]">
         <td>{{meeting.meeting}}</td>
-        <td>{{meeting.date}}</td>
+        <td></td>
         <td></td>
       </tr>
     </table>

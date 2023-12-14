@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { DialogAddNotesComponent } from '../dialog-add-notes/dialog-add-notes.component';
 import { MatDialog} from '@angular/material/dialog';
 import { Firestore} from '@angular/fire/firestore';
@@ -16,6 +16,9 @@ export class NoteComponent {
   note: Note = new Note();
   noteList: any = [];
   unsubList;
+  i = this.noteList.length;
+
+  
 
   constructor(public dialog: MatDialog) {
     this.unsubList = this.subUsersList(); 
@@ -50,7 +53,8 @@ export class NoteComponent {
     return {
       id: id || "",
       title: obj.title || "",
-      description : obj.description  || "",   
+      description : obj.description  || "",
+      amount : obj.amount || "1"  
     }
   }
 

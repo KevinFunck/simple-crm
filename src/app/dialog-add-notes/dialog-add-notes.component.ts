@@ -15,6 +15,7 @@ export class DialogAddNotesComponent {
   note = new Note;
   firestore: Firestore = inject(Firestore);
   db;
+
   
 
   constructor(public dialogRef: MatDialogRef<DialogAddNotesComponent>) {

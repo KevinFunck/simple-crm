@@ -4,11 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Firestore, collection, onSnapshot } from '@angular/fire/firestore';
 import { Meeting } from 'src/models/meeting.class';
 
-
-
-
-
-
 @Component({
   selector: 'app-calender',
   templateUrl: './calender.component.html',
@@ -21,6 +16,10 @@ export class CalenderComponent {
   meeting: Meeting = new Meeting();
   meetingList: any = [];
   unsubList;
+  selectedDate: any;
+ ate: any;
+ 
+
 
   constructor(public dialog: MatDialog) {
     this.unsubList = this.subUsersList(); 
@@ -29,6 +28,8 @@ export class CalenderComponent {
   openDialogNote() {
     this.dialog.open(DialogAddMeetingComponent);
   }
+
+
 
   subUsersList(){
     return onSnapshot(this.getMeetingRef(), (list) =>{

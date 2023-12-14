@@ -9,21 +9,23 @@ import { Meeting } from 'src/models/meeting.class';
   styleUrls: ['./dialog-add-meeting.component.scss']
 })
 export class DialogAddMeetingComponent {
-  loading: boolean = false;
-  meeting = new Meeting;
+  meeting = new Meeting();
+  date!: Date;
   firestore: Firestore = inject(Firestore);
   db;
-
+  loading = false;
 
   constructor(public dialogRef: MatDialogRef<DialogAddMeetingComponent>) {
     this.db = collection(this.firestore, 'meetings');
   }
 
   saveMeeting() {
+    this.meeting.date = this.date!.getTime();
+    this.loading =true;
+    
     addDoc(this.db, this.meeting.toJSON()).then(() => {
-      console.log(this.meeting);
+      this.loading = false;
       this.dialogRef.close();
-
     })
   }
 

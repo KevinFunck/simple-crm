@@ -30,8 +30,7 @@ import { NoteComponent } from './note/note.component';
 import { DialogAddNotesComponent } from './dialog-add-notes/dialog-add-notes.component';
 import { CalenderComponent } from './calender/calender.component';
 import { DialogAddMeetingComponent } from './dialog-add-meeting/dialog-add-meeting.component';
-import { LoginComponent } from './login/login.component';
-import { FirebaseServiceComponent } from './firebase-service/firebase-service.component';
+
 
 
 
@@ -50,8 +49,8 @@ import { FirebaseServiceComponent } from './firebase-service/firebase-service.co
     DialogAddNotesComponent,
     DialogAddMeetingComponent,
     CalenderComponent,
-    LoginComponent,
-    FirebaseServiceComponent,
+
+
   ],
   imports: [
     BrowserModule,

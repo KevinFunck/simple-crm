@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Firestore } from '@angular/fire/firestore';
-import {collection, addDoc, doc,getDoc,onSnapshot,updateDoc} from "firebase/firestore"; 
+import {collection, doc,updateDoc} from "firebase/firestore"; 
 
 
 @Component({

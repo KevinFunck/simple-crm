@@ -1,9 +1,8 @@
-import { Component, inject} from '@angular/core';
+import { Component} from '@angular/core';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { MatDialog} from '@angular/material/dialog';
-import { User } from 'src/models/user.class';
-import { Firestore } from '@angular/fire/firestore';
-import {collection, onSnapshot } from 'firebase/firestore';
+import { FirebaseServiceService } from '../firebase-service.service';
+
 
 
 
@@ -14,57 +13,15 @@ import {collection, onSnapshot } from 'firebase/firestore';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
-  firestore: Firestore = inject(Firestore);
-  user: User = new User();
-  userList: any = [];
-  unsubList;
-  //unsubSingle;
-  constructor(public dialog: MatDialog) {
-    this.unsubList = this.subUsersList(); 
+
+  constructor(private userService: FirebaseServiceService, public dialog: MatDialog) { 
   }
 
-  subUsersList(){
-    return onSnapshot(this.getUserRef(), (list) =>{
-      this.userList = [];
-      list.forEach(element => {
-        this.userList.push(this.setUserObject(element.data(), element.id));
-      });
-      if(this.userList.length >= 2){
-      this.userList.sort((a:any, b:any) => {
-        if (a.firstName < b.firstName) {
-          return -1;
-        }
-        if (a.firstName > b.firstName) {
-          return 1;
-        }
-        return 0;
-      });
-    }
-    })
+  getlist() {
+    return this.userService.userList;
   }
 
-  setUserObject(obj:any, id:string) {
-    return {
-      id: id || "",
-      firstName: obj.firstName || "",
-      lastName: obj.lastName || "",
-      birthDate: obj.birthDate || "",
-      street: obj.street || "",
-      zipCode: obj.zipCode || "",
-      city: obj.city || "",
-      email: obj.email || "",
-    }
-  }
-
-  ngOnDestroy(){
-    this.unsubList();
-  }
-  
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
-  }
-
-  getUserRef(){
-   return collection(this.firestore, 'users');
   }
 }

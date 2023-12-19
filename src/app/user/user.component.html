@@ -6,7 +6,7 @@
                 <th>E-mail</th>
                 <th>City</th>
             </tr>
-            <tr *ngFor="let user of userList" [routerLink]="[user.id]">
+            <tr *ngFor="let user of getlist()" [routerLink]="[user.id]">
                 <td>{{ user.firstName}} {{ user.lastName}}</td>
                 <td>{{ user.email}}</td>
                 <td>{{ user.city}}</td>

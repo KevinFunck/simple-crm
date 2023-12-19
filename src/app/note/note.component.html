@@ -1,6 +1,6 @@
 <h1>Notes</h1>
 
-<mat-card *ngFor="let note of noteList" [routerLink]="[note.id]" class="example-card">
+<mat-card *ngFor="let note of getlist()" [routerLink]="[note.id]" class="example-card">
     <mat-card-header>
         <mat-card-title-group>
             <mat-card-title>{{note.title}}</mat-card-title>

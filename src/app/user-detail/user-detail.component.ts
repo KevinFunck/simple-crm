@@ -16,7 +16,7 @@ export class UserDetailComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   userID: any;
   user: User = new User();
-  UserList
+  UserList;
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {
     this.userID = this.route.snapshot.paramMap.get('id');

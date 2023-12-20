@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Note } from 'src/models/notes.class';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FirebaseServiceService } from '../firebase-service.service';
 
 
 
@@ -12,21 +12,24 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogAddNotesComponent {
   loading: boolean = false;
-  note = new Note;
-  firestore: Firestore = inject(Firestore);
-  db;
+  title:string = '';
+  description:string = '';
+
+
 
   
 
-  constructor(public dialogRef: MatDialogRef<DialogAddNotesComponent>) {
-    this.db = collection(this.firestore, 'notes');
+  constructor(private noteService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddNotesComponent>) {
+   
   }
 
   saveNote() {
-    addDoc(this.db, this.note.toJSON()).then(() => {
-      console.log(this.note.id);
-      this.dialogRef.close();
-      
-    })
+    let note:Note = {
+      title: this.title,
+      description: this.description
+
+    }
+    this.noteService.saveNote(note);
+   
   }
 }

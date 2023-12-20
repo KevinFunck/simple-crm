@@ -10,7 +10,7 @@ import { Meeting } from 'src/models/meeting.class';
 })
 export class DialogAddMeetingComponent {
   meeting = new Meeting();
-  date!: Date;
+  meetingDate!: Date;
   firestore: Firestore = inject(Firestore);
   db;
   loading = false;
@@ -20,7 +20,7 @@ export class DialogAddMeetingComponent {
   }
 
   saveMeeting() {
-    this.meeting.date = this.date!.getTime();
+    this.meeting.date = this.meetingDate.getTime();
     this.loading =true;
     
     addDoc(this.db, this.meeting.toJSON()).then(() => {

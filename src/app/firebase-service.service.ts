@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, onSnapshot } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, onSnapshot } from '@angular/fire/firestore';
+import { Meeting } from 'src/models/meeting.class';
 import { Note } from 'src/models/notes.class';
 import { User } from 'src/models/user.class';
 
@@ -11,14 +12,19 @@ export class FirebaseServiceService {
   firestore: Firestore = inject(Firestore);
   user: User = new User();
   note: Note = new Note();
+  meeting: Meeting = new Meeting();
   userList: any = [];
   noteList: any = [];
+  meetingList: any = [];
   unsubList;
+  db;
 
  
   constructor() {
     this.unsubList = this.subUsersList(); 
     this.unsubList = this.subNotesList();
+    this.unsubList = this.subMeetingList();
+    this.db = collection(this.firestore, 'notes');
   }
 
   subUsersList(){
@@ -62,12 +68,45 @@ export class FirebaseServiceService {
     })
   }
 
+  subMeetingList(){
+    return onSnapshot(this.getMeetingRef(), (list) =>{
+      this.meetingList = [];
+      list.forEach(element => {
+        this.meetingList.push(this.setMeetingObject(element.data(), element.id));
+        console.log(this.meeting);
+      });
+      if(this.meetingList.length >= 2){
+      this.meetingList.sort((a:any, b:any) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+    })
+  }
+
+  saveNote(item: Note) {
+    addDoc(this.db, this.note.toJSON()).then(() => { 
+    })
+  }
+
+  setMeetingObject(obj:any, id:string) {
+    return {
+      id: id || "",
+      meeting: obj.meeting || "",
+      date : obj.date  || "",   
+    }
+  }
+
   setNoteObject(obj:any, id:string) {
     return {
       id: id || "",
       title: obj.title || "",
       description : obj.description  || "",
-      amount : obj.amount || "1"  
     }
   }
 
@@ -94,5 +133,9 @@ export class FirebaseServiceService {
   
   getUserRef(){
    return collection(this.firestore, 'users');
+  }
+
+   getMeetingRef(){
+   return collection(this.firestore, 'meetings');
   }
 }

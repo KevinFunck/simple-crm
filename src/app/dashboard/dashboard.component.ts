@@ -10,6 +10,7 @@ import { FirebaseServiceService } from '../firebase-service.service';
 export class DashboardComponent {
   noteNumber: number = this.noteService.noteList.length;
   userNumber: number = this.noteService.userList.length;
+  mettingNumber: number = this.noteService.meetingList.length;
   greeting: string = this.getGreeting();
 
 

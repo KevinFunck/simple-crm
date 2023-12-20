@@ -12,7 +12,7 @@
 <div>
     <mat-form-field appearance="outline" class="example-form-field max-width" >
         <mat-label>Date</mat-label>
-        <input  [(ngModel)]="meeting.date" [disabled]="loading" matInput [matDatepicker]="datepicker">
+        <input  [(ngModel)]="meetingDate" [disabled]="loading" matInput [matDatepicker]="datepicker">
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker>
           <mat-datepicker-actions>

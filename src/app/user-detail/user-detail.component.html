@@ -6,9 +6,11 @@
         <mat-menu #userMenu="matMenu">
             <button mat-menu-item (click)="editUserMenu()">Edit</button>
         </mat-menu>
-        <div>
+        <div class="user-picture">
             <img src="assets/img/person.png" alt="">
         </div>
+
+
 
         <div class="user-details">
             <h2>{{user.firstName}} {{user.lastName}}</h2>
@@ -17,6 +19,12 @@
     </div>
 
 </mat-card>
+
+<div class="mail-phone-delete-area">
+    <button mat-raised-button color="primary">Call<mat-icon>phone</mat-icon></button>
+    <button mat-raised-button color="primary">Mail<mat-icon>mail</mat-icon></button>
+    <button mat-raised-button color="warn">Delete<mat-icon>delete</mat-icon></button> 
+</div>
 
 <mat-card class="addres-card">
     <button mat-icon-button [matMenuTriggerFor]="addresMenu" class="button">

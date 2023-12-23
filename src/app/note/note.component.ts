@@ -11,7 +11,7 @@ import { FirebaseServiceService } from '../firebase-service.service';
 })
 export class NoteComponent {
 
-  constructor(private noteService: FirebaseServiceService, public dialog: MatDialog ) {  
+  constructor(public noteService: FirebaseServiceService, public dialog: MatDialog ) {  
   }
 
   getlist() {

@@ -32,6 +32,8 @@ import { CalenderComponent } from './calender/calender.component';
 import { DialogAddMeetingComponent } from './dialog-add-meeting/dialog-add-meeting.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StartpageComponent } from './startpage/startpage.component';
+import { CustomersComponent } from './customers/customers.component';
+import { DialogAddCustomersComponent } from './dialog-add-customers/dialog-add-customers.component';
 
 
 
@@ -55,6 +57,9 @@ import { StartpageComponent } from './startpage/startpage.component';
     DialogAddMeetingComponent,
     CalenderComponent,
     StartpageComponent,
+    CustomersComponent,
+    DialogAddCustomersComponent
+    
    
 
 

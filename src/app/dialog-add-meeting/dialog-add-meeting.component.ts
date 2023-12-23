@@ -8,6 +8,7 @@ import { FirebaseServiceService } from '../firebase-service.service';
   styleUrls: ['./dialog-add-meeting.component.scss']
 })
 export class DialogAddMeetingComponent {
+  loading:boolean = false;
  
   constructor(public meetingService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddMeetingComponent>) {
   }

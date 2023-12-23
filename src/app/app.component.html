@@ -1,13 +1,13 @@
 <mat-drawer-container class="mat-draw-container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
     <div class="logo-container">
-      <p>CRM</p>
+      <p class="logo">CRM</p>
     </div>
 
     <ul class="menu-items">
-      
       <li routerLink="/dashboard"><mat-icon>fact_check</mat-icon> Dashboard</li>
       <li routerLink="/user"><mat-icon>person_outline</mat-icon>User</li>
+      <li routerLink="/customers"><mat-icon>store</mat-icon>Customers</li>
       <li routerLink="/note"><mat-icon>note</mat-icon>Notes</li>
       <li routerLink="/calender"><mat-icon>calendar_today</mat-icon>calendar & meetings</li>
     </ul>

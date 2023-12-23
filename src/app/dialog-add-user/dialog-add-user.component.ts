@@ -8,9 +8,15 @@ import { FirebaseServiceService } from '../firebase-service.service';
   styleUrls: ['./dialog-add-user.component.scss']
 })
 export class DialogAddUserComponent {
+  loading:boolean = false;
+  firstname:string = '';
  
 
   constructor(public userService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddUserComponent>) {  
+  }
+
+  getlist() {
+     this.userService.saveUser;
   }
 
   saveUser() {

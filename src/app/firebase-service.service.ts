@@ -142,7 +142,7 @@ export class FirebaseServiceService {
     })
   }
 
-  saveNote() {
+  saveNote(item: Note) {
     addDoc(this.db, this.note.toJSON()).then(() => {
       console.log(this.note.id);
       

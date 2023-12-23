@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FirebaseServiceService } from '../firebase-service.service';
+import { Note } from 'src/models/notes.class';
 
 
 
@@ -11,12 +12,19 @@ import { FirebaseServiceService } from '../firebase-service.service';
 })
 export class DialogAddNotesComponent {
   loading: boolean = false;
-
-  constructor(public noteService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddNotesComponent>) {  
+  title: string = '';
+  description: string = '';
+ 
+  
+  constructor(private noteService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddNotesComponent>) {  
   }
 
   saveNote() {
-    this.noteService.saveNote();
+    let note:Note = new Note({
+      title: this.title,
+      description: this.description
+    });
+    this.noteService.saveNote(Note);
     this.dialogRef.close(); 
   }
 }

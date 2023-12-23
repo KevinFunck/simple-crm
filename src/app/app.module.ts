@@ -30,6 +30,11 @@ import { NoteComponent } from './note/note.component';
 import { DialogAddNotesComponent } from './dialog-add-notes/dialog-add-notes.component';
 import { CalenderComponent } from './calender/calender.component';
 import { DialogAddMeetingComponent } from './dialog-add-meeting/dialog-add-meeting.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StartpageComponent } from './startpage/startpage.component';
+
+
+
 
 
 
@@ -49,6 +54,8 @@ import { DialogAddMeetingComponent } from './dialog-add-meeting/dialog-add-meeti
     DialogAddNotesComponent,
     DialogAddMeetingComponent,
     CalenderComponent,
+    StartpageComponent,
+   
 
 
   ],
@@ -72,6 +79,7 @@ import { DialogAddMeetingComponent } from './dialog-add-meeting/dialog-add-meeti
     MatMenuModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

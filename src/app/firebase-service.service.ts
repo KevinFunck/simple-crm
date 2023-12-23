@@ -1,5 +1,6 @@
+import { Time } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, onSnapshot } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { Meeting } from 'src/models/meeting.class';
 import { Note } from 'src/models/notes.class';
 import { User } from 'src/models/user.class';
@@ -8,7 +9,7 @@ import { User } from 'src/models/user.class';
   providedIn: 'root'
 })
 export class FirebaseServiceService {
-  
+  loading:boolean = false;
   firestore: Firestore = inject(Firestore);
   user: User = new User();
   note: Note = new Note();
@@ -16,8 +17,13 @@ export class FirebaseServiceService {
   userList: any = [];
   noteList: any = [];
   meetingList: any = [];
+  birthDate!: Date;
+  meetingDate!: Date;
+  meetingTime!: Date;
   unsubList;
   db;
+ 
+
 
  
   constructor() {
@@ -25,6 +31,8 @@ export class FirebaseServiceService {
     this.unsubList = this.subNotesList();
     this.unsubList = this.subMeetingList();
     this.db = collection(this.firestore, 'notes');
+    this.db = collection(this.firestore, 'users');
+    this.db = collection(this.firestore, 'meetings');
   }
 
   subUsersList(){
@@ -46,6 +54,8 @@ export class FirebaseServiceService {
     }
     })
   }
+
+  
 
   subNotesList(){
     return onSnapshot(this.getNoteRef(), (list) =>{
@@ -89,16 +99,12 @@ export class FirebaseServiceService {
     })
   }
 
-  saveNote(item: Note) {
-    addDoc(this.db, this.note.toJSON()).then(() => { 
-    })
-  }
-
   setMeetingObject(obj:any, id:string) {
     return {
       id: id || "",
       meeting: obj.meeting || "",
-      date : obj.date  || "",   
+      date : obj.date  || "", 
+      time: obj.time || ""  
     }
   }
 
@@ -123,6 +129,28 @@ export class FirebaseServiceService {
     }
   }
 
+  saveMeeting() {
+    this.meeting.date = this.meetingDate.getTime();
+    this.meeting.time = this.meetingTime.getTime();
+    addDoc(this.db, this.meeting.toJSON()).then(() => {
+    })
+  }
+
+  saveUser() {
+    this.user.birthDate = this.birthDate.getTime();
+    addDoc(this.db, this.user.toJSON()).then(() => {   
+    })
+  }
+
+  saveNote() {
+    addDoc(this.db, this.note.toJSON()).then(() => {
+      console.log(this.note.id);
+      
+    })
+  }
+
+
+
   ngOnDestroy(){
     this.unsubList();
   }
@@ -138,4 +166,6 @@ export class FirebaseServiceService {
    getMeetingRef(){
    return collection(this.firestore, 'meetings');
   }
+
+ 
 }

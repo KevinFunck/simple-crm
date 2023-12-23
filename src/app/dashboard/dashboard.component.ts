@@ -12,10 +12,17 @@ export class DashboardComponent {
   userNumber: number = this.noteService.userList.length;
   mettingNumber: number = this.noteService.meetingList.length;
   greeting: string = this.getGreeting();
+  selectedTime: string | undefined;
 
 
   constructor(private noteService: FirebaseServiceService) {
 
+  }
+
+  handleTimeSelected(time: string): void {
+    this.selectedTime = time;
+    console.log('Selected Time:', time);
+    // You can perform additional actions with the selected time
   }
 
   getGreeting() {

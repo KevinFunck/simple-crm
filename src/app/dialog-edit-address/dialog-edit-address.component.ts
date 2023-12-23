@@ -19,7 +19,7 @@ export class DialogEditAddressComponent {
   async saveUser(){
     this.loading = true;
     await updateDoc(this.getSingleRef(), JSON.parse(JSON.stringify(this.user))).then(() =>{this.loading = false; this.dialogRef.close()});
-    
+  
   }
 
   getSingleRef(){

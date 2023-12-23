@@ -4,7 +4,7 @@
     <p class="inputfield over-100-div">
         <mat-form-field  appearance="outline" class="max-width">
             <mat-label>Title</mat-label>
-            <input  [(ngModel)]="title" matInput placeholder="Title">
+            <input [(ngModel)]="noteService.note.title" matInput placeholder="Title">
         </mat-form-field>
     </p>
 </div>
@@ -13,7 +13,7 @@
     <p class="inputfield over-100-div">
         <mat-form-field appearance="outline" class="max-width">
             <mat-label>Note</mat-label>
-            <input [(ngModel)]="description" matInput placeholder="Note">
+            <input [(ngModel)]="noteService.note.description" matInput placeholder="Note">
         </mat-form-field>
     </p>
 </div>

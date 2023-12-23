@@ -1,5 +1,5 @@
 <div  class="dialog-container">
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="userService.loading" mode="indeterminate"></mat-progress-bar>
 
     <h1 mat-dialog-title>Add User</h1>
     <div mat-dialog-content>
@@ -7,13 +7,13 @@
             <p>
                 <mat-form-field class="mr-16" appearance="outline">
                     <mat-label>First Name</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="First Name">
+                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.firstName" matInput placeholder="First Name">
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Last Name</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Last Name">
+                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.lastName" matInput placeholder="Last Name">
                 </mat-form-field>
             </p>
         </div>
@@ -22,7 +22,7 @@
             <p>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>E-mail</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="E-mail"> 
+                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.email" matInput placeholder="E-mail"> 
                 </mat-form-field>
             </p>
         </div>
@@ -31,7 +31,7 @@
             <p>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Birth Date</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="birthDate" matInput placeholder="Birth Date" [matDatepicker]="picker2">
+                    <input [disabled]="userService.loading" [(ngModel)]="userService.birthDate" matInput placeholder="Birth Date" [matDatepicker]="picker2">
                     <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2 color="primary"></mat-datepicker>
                 </mat-form-field>
@@ -42,7 +42,7 @@
             <p>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Street and House no</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Street and house number">
+                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.street" matInput placeholder="Street and house number">
                 </mat-form-field>
             </p>
 
@@ -52,20 +52,20 @@
             <p>
                 <mat-form-field appearance="outline" class="mr-16">
                     <mat-label>Zip code</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Zip code">
+                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.zipCode" matInput placeholder="Zip code">
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>City</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="City">
+                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.city" matInput placeholder="City">
                 </mat-form-field>
             </p>
 
         </div>
     </div>
     <div mat-dialog-actions>
-        <button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
-        <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+        <button [disabled]="userService.loading" mat-button (click)="dialogRef.close()">Cancel</button>
+        <button [disabled]="userService.loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
     </div>
 </div>

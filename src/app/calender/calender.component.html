@@ -23,7 +23,7 @@
       <tr *ngFor="let meeting of getlist()" [routerLink]="[meeting.id]">
         <td>{{meeting.meeting}}</td>
         <td>{{meeting.date | date: 'dd-MM-yyyy'}}</td>
-        <td></td>
+        <td>{{meeting.time}}</td>
       </tr>
     </table>
   </mat-card-content>

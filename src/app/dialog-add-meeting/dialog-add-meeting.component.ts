@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Meeting } from 'src/models/meeting.class';
+import { FirebaseServiceService } from '../firebase-service.service';
 
 @Component({
   selector: 'app-dialog-add-meeting',
@@ -9,24 +8,16 @@ import { Meeting } from 'src/models/meeting.class';
   styleUrls: ['./dialog-add-meeting.component.scss']
 })
 export class DialogAddMeetingComponent {
-  meeting = new Meeting();
-  meetingDate!: Date;
-  firestore: Firestore = inject(Firestore);
-  db;
-  loading = false;
-
-  constructor(public dialogRef: MatDialogRef<DialogAddMeetingComponent>) {
-    this.db = collection(this.firestore, 'meetings');
+ 
+  constructor(public meetingService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddMeetingComponent>) {
   }
+
+ 
 
   saveMeeting() {
-    this.meeting.date = this.meetingDate.getTime();
-    this.loading =true;
-    
-    addDoc(this.db, this.meeting.toJSON()).then(() => {
-      this.loading = false;
-      this.dialogRef.close();
-    })
+    this.meetingService.saveMeeting();
+    this.dialogRef.close();
   }
+
 
 }

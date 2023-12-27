@@ -21,6 +21,10 @@
 
 }
 
+
+
+
+
 mat-toolbar,
 mat-toolbar-row {
     min-height: 56px;
@@ -56,3 +60,17 @@ mat-toolbar-row {
     padding-right: 56px;
     padding-top: 16px;
 }
+
+.fix{
+    
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+

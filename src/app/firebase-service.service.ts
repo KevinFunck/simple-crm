@@ -21,18 +21,22 @@ export class FirebaseServiceService {
   meetingDate!: Date;
   meetingTime!: Date;
   unsubList;
+  unsubListU;
+  unsubListM;
   db;
+  dbu;
+  dbm;
  
 
 
  
   constructor() {
-    this.unsubList = this.subUsersList(); 
+    this.unsubListU = this.subUsersList(); 
     this.unsubList = this.subNotesList();
-    this.unsubList = this.subMeetingList();
+    this.unsubListM = this.subMeetingList();
     this.db = collection(this.firestore, 'notes');
-    this.db = collection(this.firestore, 'users');
-    this.db = collection(this.firestore, 'meetings');
+    this.dbu = collection(this.firestore, 'users');
+    this.dbm = collection(this.firestore, 'meetings');
   }
 
   subUsersList(){
@@ -132,17 +136,17 @@ export class FirebaseServiceService {
   saveMeeting() {
     this.meeting.date = this.meetingDate.getTime();
     this.meeting.time = this.meetingTime.getTime();
-    addDoc(this.db, this.meeting.toJSON()).then(() => {
+    addDoc(this.dbm, this.meeting.toJSON()).then(() => {
     })
   }
 
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
-    addDoc(this.db, this.user.toJSON()).then(() => {   
+    addDoc(this.dbu, this.user.toJSON()).then(() => {   
     })
   }
 
-  saveNote(item: Note) {
+  saveNote() {
     addDoc(this.db, this.note.toJSON()).then(() => {
       console.log(this.note.id);
       
@@ -153,6 +157,8 @@ export class FirebaseServiceService {
 
   ngOnDestroy(){
     this.unsubList();
+    this.unsubListM();
+    this.unsubListU();
   }
 
   getNoteRef(){

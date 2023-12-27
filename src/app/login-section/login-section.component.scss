@@ -1,0 +1,31 @@
+.inputfield{
+    height: 80px;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    color: #3f51b5;
+    font-size: 42px !important; 
+}
+
+.background {
+    background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.login-card {
+    height: 300px;
+    width: 500px;
+}
+
+.d-none {
+    display: none;
+}

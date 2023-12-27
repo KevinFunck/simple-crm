@@ -1,0 +1,34 @@
+
+    <mat-card id="cA" class="login-card">
+        <mat-card-header>
+            <h1>Create a account</h1>
+        </mat-card-header>
+
+        <div>
+            <p>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput placeholder="E-mail">
+                </mat-form-field>
+            </p>
+        </div>
+
+        <div>
+            <p>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </p>
+        </div>
+
+        <mat-card-actions>
+            <button (click)="backToLogin()" mat-button>Back</button>
+            <button mat-button>Create</button>
+        </mat-card-actions>
+    </mat-card>
+

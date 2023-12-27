@@ -24,7 +24,7 @@ export class DialogAddNotesComponent {
       title: this.title,
       description: this.description
     });
-    this.noteService.saveNote(Note);
+    this.noteService.saveNote();
     this.dialogRef.close(); 
   }
 }

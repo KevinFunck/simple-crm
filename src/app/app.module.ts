@@ -31,9 +31,10 @@ import { DialogAddNotesComponent } from './dialog-add-notes/dialog-add-notes.com
 import { CalenderComponent } from './calender/calender.component';
 import { DialogAddMeetingComponent } from './dialog-add-meeting/dialog-add-meeting.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StartpageComponent } from './startpage/startpage.component';
 import { CustomersComponent } from './customers/customers.component';
 import { DialogAddCustomersComponent } from './dialog-add-customers/dialog-add-customers.component';
+import { LoginSectionComponent } from './login-section/login-section.component';
+import { DialogCreateAcoountComponent } from './dialog-create-acoount/dialog-create-acoount.component';
 
 
 
@@ -56,9 +57,10 @@ import { DialogAddCustomersComponent } from './dialog-add-customers/dialog-add-c
     DialogAddNotesComponent,
     DialogAddMeetingComponent,
     CalenderComponent,
-    StartpageComponent,
     CustomersComponent,
-    DialogAddCustomersComponent
+    DialogAddCustomersComponent,
+    LoginSectionComponent,
+    DialogCreateAcoountComponent
     
    
 

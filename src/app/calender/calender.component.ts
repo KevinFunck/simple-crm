@@ -13,6 +13,7 @@ import { FirebaseServiceService } from '../firebase-service.service';
 
 })
 export class CalenderComponent {
+date: any;
 
 
 

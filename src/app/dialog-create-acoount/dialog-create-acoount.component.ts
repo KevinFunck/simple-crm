@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-create-acoount',
@@ -8,8 +9,10 @@ import { Component } from '@angular/core';
 export class DialogCreateAcoountComponent {
   hide = true;
 
+  constructor(public dialogRef: MatDialogRef<DialogCreateAcoountComponent>) {}
+
   backToLogin() {
-    document.getElementById('cA')?.classList.add('d-none');
+    this.dialogRef.close(); 
   }
 
 }

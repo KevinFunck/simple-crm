@@ -9,13 +9,18 @@ import { FirebaseServiceService } from '../firebase-service.service';
 })
 export class DialogAddMeetingComponent {
   loading:boolean = false;
+  meetingDate:string = '';
+  meeting:string = '';
+
  
-  constructor(public meetingService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddMeetingComponent>) {
+  constructor(private meetingService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddMeetingComponent>) {
   }
 
  
 
   saveMeeting() {
+    this.meetingService.meeting.meeting = this.meeting;
+    this.meetingService.meeting.meetingDate = this.meetingDate;
     this.meetingService.saveMeeting();
     this.dialogRef.close();
   }

@@ -20,10 +20,9 @@ export class DialogAddNotesComponent {
   }
 
   saveNote() {
-    let note:Note = new Note({
-      title: this.title,
-      description: this.description
-    });
+    this.noteService.note.title = this.title;
+    this.noteService.note.description = this.description;
+    this.noteService.note.description;
     this.noteService.saveNote();
     this.dialogRef.close(); 
   }

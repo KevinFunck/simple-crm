@@ -1,10 +1,10 @@
-<mat-progress-bar *ngIf="meetingService.loading" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 <h1 mat-dialog-title>Add Meeting</h1>
 <div>
     <p class="inputfield over-100-div">
         <mat-form-field appearance="outline" class="max-width">
             <mat-label>Meeting</mat-label>
-            <input [(ngModel)]="meetingService.meeting.meeting" matInput placeholder="Meeting">
+            <input [(ngModel)]="meeting" matInput placeholder="Meeting">
         </mat-form-field>
     </p>
 </div>
@@ -12,7 +12,7 @@
 <div>
     <mat-form-field appearance="outline" class="example-form-field max-width">
         <mat-label>Date</mat-label>
-        <input [(ngModel)]="meetingService.meetingDate" [disabled]="meetingService.loading" matInput
+        <input [(ngModel)]="meetingDate" [disabled]="loading" matInput
             [matDatepicker]="datepicker">
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker>

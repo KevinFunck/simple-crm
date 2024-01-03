@@ -27,9 +27,6 @@ export class FirebaseServiceService {
   dbu;
   dbm;
  
-
-
- 
   constructor() {
     this.unsubListU = this.subUsersList(); 
     this.unsubList = this.subNotesList();

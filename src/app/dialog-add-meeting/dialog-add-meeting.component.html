@@ -12,7 +12,7 @@
 <div>
     <mat-form-field appearance="outline" class="example-form-field max-width">
         <mat-label>Date</mat-label>
-        <input [(ngModel)]="meetingDate" [disabled]="loading" matInput
+        <input [(ngModel)]="date" [disabled]="loading" matInput
             [matDatepicker]="datepicker">
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker>
@@ -28,7 +28,7 @@
     <p class="inputfield over-100-div">
         <mat-form-field appearance="outline" class="max-width">
             <mat-label>Time</mat-label>
-            <input  matInput [type]="'time'" placeholder="Time">
+            <input [(ngModel)]="time" placeholder="Time">
         </mat-form-field>
     </p>
 </div>

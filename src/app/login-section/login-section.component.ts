@@ -12,10 +12,7 @@ export class LoginSectionComponent {
 
   constructor( public dialog: MatDialog ) {}
 
-  guest() {
-   
-    
-  }
+
 
   openDialog() {
     this.dialog.open(DialogCreateAcoountComponent);

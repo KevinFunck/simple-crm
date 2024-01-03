@@ -9,17 +9,27 @@ import { FirebaseServiceService } from '../firebase-service.service';
 })
 export class DialogAddUserComponent {
   loading:boolean = false;
-  firstname:string = '';
+  firstName:string = '';
+  lastName:string = '';
+  email:string = '';
+  birthDate!:Date;
+  street:string = '';
+  zipCode:string = '';
+  city:string = '';
  
 
-  constructor(public userService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddUserComponent>) {  
+  constructor(private userService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddUserComponent>) {  
   }
 
-  getlist() {
-     this.userService.saveUser;
-  }
 
   saveUser() {
+    this.userService.user.firstName = this.firstName;
+    this.userService.user.lastName = this.lastName;
+    this.userService.user.email = this.email;
+    this.userService.user.birthDate = this.birthDate;
+    this.userService.user.street = this.street;
+    this.userService.user.zipCode = this.zipCode;
+    this.userService.user.city = this.city;
     this.userService.saveUser();
     this.dialogRef.close(); 
   }

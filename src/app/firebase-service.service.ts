@@ -17,7 +17,7 @@ export class FirebaseServiceService {
   userList: any = [];
   noteList: any = [];
   meetingList: any = [];
-  birthDate!: Date;
+  birthDate!: number;
   meetingDate!: Date;
   meetingTime!: Date;
   unsubList;

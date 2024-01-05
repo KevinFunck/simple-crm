@@ -7,10 +7,10 @@
                 <th>E-mail</th>
                 <th>City</th>
             </tr>
-            <tr  >
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let Customer of getlist()" [routerLink]="[Customer.id]">
+                <td>{{ Customer.companyName}}</td>
+                <td>{{ Customer.email}}</td>
+                <td>{{ Customer.city}}</td>
             </tr>
         </table>
     </mat-card-content>

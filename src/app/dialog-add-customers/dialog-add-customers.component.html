@@ -6,7 +6,7 @@
         <p>
             <mat-form-field class="mr-16" appearance="outline" class="full-width">
                 <mat-label>Company Name</mat-label>
-                <input [disabled]="userService.loading" [(ngModel)]="userService.user.firstName" matInput
+                <input [disabled]="loading" [(ngModel)]="companyName" matInput
                     placeholder="First Name">
             </mat-form-field>
         </p>
@@ -15,14 +15,14 @@
             <p>
                 <mat-form-field class="mr-16" appearance="outline">
                     <mat-label>First Name</mat-label>
-                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.firstName" matInput
+                    <input [disabled]="loading" [(ngModel)]="firstName" matInput
                         placeholder="First Name">
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Last Name</mat-label>
-                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.lastName" matInput
+                    <input [disabled]="loading" [(ngModel)]="lastName" matInput
                         placeholder="Last Name">
                 </mat-form-field>
             </p>
@@ -32,7 +32,7 @@
             <p>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>E-mail</mat-label>
-                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.email" matInput
+                    <input [disabled]="loading" [(ngModel)]="email" matInput
                         placeholder="E-mail">
                 </mat-form-field>
             </p>
@@ -41,8 +41,18 @@
         <div>
             <p>
                 <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Phone</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="phone" matInput
+                        placeholder="Phone">
+                </mat-form-field>
+            </p>
+        </div>
+
+        <div>
+            <p>
+                <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Street and House no</mat-label>
-                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.street" matInput
+                    <input [disabled]="loading" [(ngModel)]="street" matInput
                         placeholder="Street and house number">
                 </mat-form-field>
             </p>
@@ -52,14 +62,14 @@
             <p>
                 <mat-form-field appearance="outline" class="mr-16">
                     <mat-label>Zip code</mat-label>
-                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.zipCode" matInput
+                    <input [disabled]="loading" [(ngModel)]="zipCode" matInput
                         placeholder="Zip code">
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>City</mat-label>
-                    <input [disabled]="userService.loading" [(ngModel)]="userService.user.city" matInput
+                    <input [disabled]="loading" [(ngModel)]="city" matInput
                         placeholder="City">
                 </mat-form-field>
             </p>
@@ -67,7 +77,7 @@
         </div>
     </div>
     <div mat-dialog-actions>
-        <button [disabled]="userService.loading" mat-button (click)="dialogRef.close()">Cancel</button>
-        <button [disabled]="userService.loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+        <button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
+        <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
     </div>
 </div>

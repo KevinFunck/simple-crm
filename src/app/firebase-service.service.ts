@@ -1,6 +1,7 @@
-import { Time } from '@angular/common';
+
 import { Injectable, inject } from '@angular/core';
 import { Firestore, addDoc, collection, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { Customer } from 'src/models/customer.class';
 import { Meeting } from 'src/models/meeting.class';
 import { Note } from 'src/models/notes.class';
 import { User } from 'src/models/user.class';
@@ -14,26 +15,33 @@ export class FirebaseServiceService {
   user: User = new User();
   note: Note = new Note();
   meeting: Meeting = new Meeting();
+  customer:Customer= new Customer();
   userList: any = [];
   noteList: any = [];
   meetingList: any = [];
-  birthDate!: number;
+  customerlist: any = [];
+  birthDate!: Date;
   meetingDate!: Date;
   meetingTime!: Date;
   unsubList;
   unsubListU;
   unsubListM;
+  unsubListC;
   db;
   dbu;
   dbm;
+  dbc;
+
  
   constructor() {
     this.unsubListU = this.subUsersList(); 
     this.unsubList = this.subNotesList();
     this.unsubListM = this.subMeetingList();
+    this.unsubListC = this.subCustomersList();
     this.db = collection(this.firestore, 'notes');
     this.dbu = collection(this.firestore, 'users');
     this.dbm = collection(this.firestore, 'meetings');
+    this.dbc = collection(this.firestore, 'customers');
   }
 
   subUsersList(){
@@ -57,7 +65,7 @@ export class FirebaseServiceService {
   }
 
   
-
+  
   subNotesList(){
     return onSnapshot(this.getNoteRef(), (list) =>{
       this.noteList = [];
@@ -78,7 +86,8 @@ export class FirebaseServiceService {
     }
     })
   }
-
+  //The subMeetingList function subscribes to real-time updates of a meeting list from 
+  //a Firestore database, updates the local this.meetingList with the received data, and sorts it alphabetically by title if the list contains two or more elements.
   subMeetingList(){
     return onSnapshot(this.getMeetingRef(), (list) =>{
       this.meetingList = [];
@@ -88,6 +97,27 @@ export class FirebaseServiceService {
       });
       if(this.meetingList.length >= 2){
       this.meetingList.sort((a:any, b:any) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+    })
+  }
+
+  subCustomersList(){
+    return onSnapshot(this.getCustomerRef(), (list) =>{
+      this.customerlist = [];
+      list.forEach(element => {
+        this.customerlist.push(this.setCustomerObject(element.data(), element.id));
+        console.log(this.customer);
+      });
+      if(this.customerlist.length >= 2){
+      this.customerlist.sort((a:any, b:any) => {
         if (a.title < b.title) {
           return -1;
         }
@@ -130,36 +160,49 @@ export class FirebaseServiceService {
     }
   }
 
+  setCustomerObject(obj:any, id:string) {
+    return {
+      id: id || "",
+      companyName: obj.companyName || "",
+      firstName: obj.firstName || "",
+      lastName: obj.lastName || "",
+      email: obj.email || "",
+      phone: obj.phone || "",
+      street: obj.street || "",
+      zipCode: obj.zipCode || "",
+      city: obj.city || "",
+    }
+  }
+
   saveMeeting() {
-    this.meeting.date = this.meetingDate.getTime();
-    this.meeting.time = this.meetingTime.getTime();
-    addDoc(this.dbm, this.meeting.toJSON()).then(() => {
-    })
+    addDoc(this.dbm, this.meeting.toJSON())
   }
 
   saveUser() {
-    this.user.birthDate = this.birthDate.getTime();
-    addDoc(this.dbu, this.user.toJSON()).then(() => {   
-    })
+    addDoc(this.dbu, this.user.toJSON())   
+  }
+
+  saveCustomer() {
+    addDoc(this.dbc, this.customer.toJSON())   
   }
 
   saveNote() {
-    addDoc(this.db, this.note.toJSON()).then(() => {
-      console.log(this.note.id);
-      
-    })
+    addDoc(this.db, this.note.toJSON()) 
   }
-
-
 
   ngOnDestroy(){
     this.unsubList();
     this.unsubListM();
     this.unsubListU();
+    this.unsubListC();
   }
 
   getNoteRef(){
     return collection(this.firestore, 'notes');
+   }
+
+   getCustomerRef(){
+    return collection(this.firestore, 'customers');
    }
   
   getUserRef(){

@@ -26,7 +26,7 @@ export class DialogAddUserComponent {
     this.userService.user.firstName = this.firstName;
     this.userService.user.lastName = this.lastName;
     this.userService.user.email = this.email;
-    this.userService.user.birthDate = this.birthDate;
+    this.userService.user.birthDate = this.birthDate.getTime();
     this.userService.user.street = this.street;
     this.userService.user.zipCode = this.zipCode;
     this.userService.user.city = this.city;

@@ -1,8 +1,8 @@
 export class Meeting {
     id?: string;
     meeting:string;
-    date:number;
-    time:number;
+    date:any;
+    time:any;
 
   
 

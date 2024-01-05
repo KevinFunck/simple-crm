@@ -9,18 +9,31 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogAddCustomersComponent {
   loading:boolean = false;
-  firstname:string = '';
+  companyName:string = '';
+  firstName:string = '';
+  lastName:string = '';
+  email:string = '';
+  phone:string = '';
+  street:string = '';
+  zipCode:string = '';
+  city:string = '';
+
  
 
-  constructor(public userService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddCustomersComponent>) {  
+  constructor(private customerService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddCustomersComponent>) {  
   }
 
-  getlist() {
-     this.userService.saveUser;
-  }
 
   saveUser() {
-    this.userService.saveUser();
+    this.customerService.customer.companyName = this.companyName;
+    this.customerService.customer.firstName = this.firstName;
+    this.customerService.customer.lastName = this.lastName;
+    this.customerService.customer.email = this.email;
+    this.customerService.customer.phone = this.phone;
+    this.customerService.customer.street = this.street;
+    this.customerService.customer.zipCode = this.zipCode;
+    this.customerService.customer.city = this.city;
+    this.customerService.saveUser();
     this.dialogRef.close(); 
   }
 

@@ -1,0 +1,53 @@
+.user-header{
+    display: flex;
+    align-items: flex-end;
+    min-height: 200px;
+    background-color: #3f51b5;
+    color: white;
+    padding: 8px;
+
+    img{
+        object-fit: cover;
+        max-height: 100px;
+        max-width: 100px;
+        border-radius: 100%;
+        border: 2px solid #e6e6e6;
+        
+    }
+}
+
+.user-details{
+    margin-left: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100px;
+
+    h2{
+        margin-bottom: 0px;
+        font-size: 28px;
+        margin-bottom: 0;
+    }
+}
+
+.addres-card{
+    position: relative;
+    margin-top: 32px;
+
+    p{
+        margin: 0;
+    }
+}
+
+.button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mail-phone-delete-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}

@@ -1,0 +1,44 @@
+<div class="dialog-container">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+    <h1 mat-dialog-title>Add order</h1>
+    <div mat-dialog-content>
+
+        <p>
+            <mat-form-field class="mr-16" appearance="outline" class="full-width">
+                <mat-label>Assignment name</mat-label>
+                <input [disabled]="loading" [(ngModel)]="assignmentName" matInput placeholder="Assignment name">
+            </mat-form-field>
+        </p>
+
+        <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input [(ngModel)]="startDate" matStartDate placeholder="Start date">
+                <input [(ngModel)]="endDate" matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <p>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Sales volume $</mat-label>
+                <input [disabled]="loading" [(ngModel)]="salesVolume" matInput placeholder="Sales volume">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Assingment info</mat-label>
+                <textarea [disabled]="loading" [(ngModel)]="assignmentInfo" matInput placeholder="City"></textarea>
+            </mat-form-field>
+        </p>
+
+
+    </div>
+    <div mat-dialog-actions>
+        <button [disabled]="loading" mat-button>Cancel</button>
+        <button (click)="saveOrder()" [disabled]="loading" mat-button cdkFocusInitial>Save</button>
+    </div>
+</div>

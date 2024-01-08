@@ -1,0 +1,23 @@
+<h1 class="title-assignments">Assignments</h1>
+<mat-card>
+    <mat-card-content>
+        <table class="user-table">
+            <tr>
+                <th>Assignment name</th>
+                <th>Start date</th>
+                <th>End date</th>
+            </tr>
+            <tr  *ngFor="let Assignment of getlist()" [routerLink]="[Assignment.id]">
+                <td>{{Assignment.assignmentName}}</td>
+                <td>{{Assignment.startDate | date: 'dd-MM-yyyy'}}</td>
+                <td>{{Assignment.endDate | date: 'dd-MM-yyyy'}}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+
+<button (click)="openDialog()"  class="add-user-btn" mat-fab color="primary" matTooltip="Add order">
+    <mat-icon>add</mat-icon>
+</button>
+

@@ -1,6 +1,7 @@
 
 import { Injectable, inject } from '@angular/core';
 import { Firestore, addDoc, collection, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { Assignment } from 'src/models/assignment.class';
 import { Customer } from 'src/models/customer.class';
 import { Meeting } from 'src/models/meeting.class';
 import { Note } from 'src/models/notes.class';
@@ -15,22 +16,23 @@ export class FirebaseServiceService {
   user: User = new User();
   note: Note = new Note();
   meeting: Meeting = new Meeting();
-  customer:Customer= new Customer();
+  customer: Customer= new Customer();
+  assignment: Assignment = new Assignment();
+  assginmentList: any = [];
   userList: any = [];
   noteList: any = [];
   meetingList: any = [];
-  customerlist: any = [];
-  birthDate!: Date;
-  meetingDate!: Date;
-  meetingTime!: Date;
+  customerList: any = [];
   unsubList;
   unsubListU;
   unsubListM;
   unsubListC;
+  unsubListA;
   db;
   dbu;
   dbm;
   dbc;
+  dba;
 
  
   constructor() {
@@ -38,10 +40,12 @@ export class FirebaseServiceService {
     this.unsubList = this.subNotesList();
     this.unsubListM = this.subMeetingList();
     this.unsubListC = this.subCustomersList();
+    this.unsubListA = this.subAssginmentList();
     this.db = collection(this.firestore, 'notes');
     this.dbu = collection(this.firestore, 'users');
     this.dbm = collection(this.firestore, 'meetings');
     this.dbc = collection(this.firestore, 'customers');
+    this.dba = collection(this.firestore, 'assignment');
   }
 
   subUsersList(){
@@ -71,10 +75,31 @@ export class FirebaseServiceService {
       this.noteList = [];
       list.forEach(element => {
         this.noteList.push(this.setNoteObject(element.data(), element.id));
-        console.log(this.note);
+
       });
       if(this.noteList.length >= 2){
       this.noteList.sort((a:any, b:any) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+    })
+  }
+
+  subAssginmentList(){
+    return onSnapshot(this.getAssignmentRef(), (list) =>{
+      this.assginmentList = [];
+      list.forEach(element => {
+        this.assginmentList.push(this.setAssignmentObject(element.data(), element.id));
+
+      });
+      if(this.assginmentList.length >= 2){
+      this.assginmentList.sort((a:any, b:any) => {
         if (a.title < b.title) {
           return -1;
         }
@@ -111,17 +136,16 @@ export class FirebaseServiceService {
 
   subCustomersList(){
     return onSnapshot(this.getCustomerRef(), (list) =>{
-      this.customerlist = [];
+      this.customerList = [];
       list.forEach(element => {
-        this.customerlist.push(this.setCustomerObject(element.data(), element.id));
-        console.log(this.customer);
+        this.customerList.push(this.setCustomerObject(element.data(), element.id));    
       });
-      if(this.customerlist.length >= 2){
-      this.customerlist.sort((a:any, b:any) => {
-        if (a.title < b.title) {
+      if(this.customerList.length >= 2){
+      this.customerList.sort((a:any, b:any) => {
+        if (a.companyName < b.companyName) {
           return -1;
         }
-        if (a.title > b.title) {
+        if (a.companyName > b.companyName) {
           return 1;
         }
         return 0;
@@ -174,6 +198,17 @@ export class FirebaseServiceService {
     }
   }
 
+  setAssignmentObject(obj:any, id:string) {
+    return {
+      id: id || "",
+      assignmentName: obj.assignmentName || "",
+      startDate: obj.startDate || "",
+      endDate: obj.endDate || "",
+      salesVolume: obj.salesVolume || "",
+      assignmentInfo: obj.assignemtInfo || "",
+    }
+  }
+
   saveMeeting() {
     addDoc(this.dbm, this.meeting.toJSON())
   }
@@ -184,10 +219,15 @@ export class FirebaseServiceService {
 
   saveCustomer() {
     addDoc(this.dbc, this.customer.toJSON())   
+    console.log(this.customer);
   }
 
   saveNote() {
     addDoc(this.db, this.note.toJSON()) 
+  }
+
+  saveOrder() {
+    addDoc(this.dba, this.assignment.toJSON()) 
   }
 
   ngOnDestroy(){
@@ -195,6 +235,7 @@ export class FirebaseServiceService {
     this.unsubListM();
     this.unsubListU();
     this.unsubListC();
+    this.unsubListA();
   }
 
   getNoteRef(){
@@ -212,6 +253,10 @@ export class FirebaseServiceService {
    getMeetingRef(){
    return collection(this.firestore, 'meetings');
   }
+
+  getAssignmentRef(){
+    return collection(this.firestore, 'assignment');
+   }
 
  
 }

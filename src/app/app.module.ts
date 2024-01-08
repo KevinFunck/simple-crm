@@ -35,6 +35,12 @@ import { CustomersComponent } from './customers/customers.component';
 import { DialogAddCustomersComponent } from './dialog-add-customers/dialog-add-customers.component';
 import { LoginSectionComponent } from './login-section/login-section.component';
 import { DialogCreateAcoountComponent } from './dialog-create-acoount/dialog-create-acoount.component';
+import { CutomerDetailAssignmentsComponent } from './cutomer-detail-assignments/cutomer-detail-assignments.component';
+import { DialogEditCustomerComponent } from './dialog-edit-customer/dialog-edit-customer.component';
+import { DialogEditCustomerAddressComponent } from './dialog-edit-customer-address/dialog-edit-customer-address.component';
+import { AssignmentsComponent } from './assignments/assignments.component';
+import { DialogAddOrderComponent } from './dialog-add-order/dialog-add-order.component';
+import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 
 
 
@@ -60,7 +66,13 @@ import { DialogCreateAcoountComponent } from './dialog-create-acoount/dialog-cre
     CustomersComponent,
     DialogAddCustomersComponent,
     LoginSectionComponent,
-    DialogCreateAcoountComponent
+    DialogCreateAcoountComponent,
+    CutomerDetailAssignmentsComponent,
+    DialogEditCustomerComponent,
+    DialogEditCustomerAddressComponent,
+    AssignmentsComponent,
+    DialogAddOrderComponent,
+    AssignmentDetailComponent
     
    
 

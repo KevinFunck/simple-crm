@@ -24,7 +24,7 @@ export class DialogAddCustomersComponent {
   }
 
 
-  saveUser() {
+  saveCustomer() {
     this.customerService.customer.companyName = this.companyName;
     this.customerService.customer.firstName = this.firstName;
     this.customerService.customer.lastName = this.lastName;
@@ -33,7 +33,7 @@ export class DialogAddCustomersComponent {
     this.customerService.customer.street = this.street;
     this.customerService.customer.zipCode = this.zipCode;
     this.customerService.customer.city = this.city;
-    this.customerService.saveUser();
+    this.customerService.saveCustomer();
     this.dialogRef.close(); 
   }
 

@@ -1,0 +1,45 @@
+<mat-card>
+    <div class="user-header">
+        <button mat-icon-button [matMenuTriggerFor]="userMenu" class="button">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+            <button mat-menu-item (click)="editUserMenu()">Edit</button>
+        </mat-menu>
+
+
+
+
+        <div class="user-details">
+            <h2>{{customer.firstName}} {{customer.lastName}}</h2>
+            <span>{{customer.email}}</span>
+            <span></span>
+        </div>
+    </div>
+
+</mat-card>
+
+<div class="mail-phone-delete-area">
+    <button mat-raised-button color="primary">Call<mat-icon>phone</mat-icon></button>
+    <button mat-raised-button color="primary">Mail<mat-icon>mail</mat-icon></button>
+    <button mat-raised-button color="warn">Delete<mat-icon>delete</mat-icon></button> 
+</div>
+
+<mat-card class="addres-card">
+    <button mat-icon-button [matMenuTriggerFor]="addresMenu" class="button">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #addresMenu="matMenu">
+        <button mat-menu-item (click)="editAddress()">Edit</button>
+    </mat-menu>
+
+    <mat-card-header>
+        <mat-card-title>Address</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{customer.street}}</p>
+        <p>{{customer.zipCode}} {{customer.city}}</p>
+
+    </mat-card-content>
+</mat-card>
+<app-assignments></app-assignments>

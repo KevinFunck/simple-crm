@@ -13,7 +13,7 @@ export class CustomersComponent {
   }
 
   getlist() {
-    return this.customerService.customerlist;
+    return this.customerService.customerList;
   }
 
   openDialog() {

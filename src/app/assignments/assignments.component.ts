@@ -9,8 +9,11 @@ import { FirebaseServiceService } from '../firebase-service.service';
   styleUrls: ['./assignments.component.scss']
 })
 export class AssignmentsComponent {
+  selectedColor: any;
 
-  constructor(private assignmentService: FirebaseServiceService,public dialog: MatDialog) {}
+  constructor(private assignmentService: FirebaseServiceService,public dialog: MatDialog) {
+    
+  }
 
   getlist() {
     return this.assignmentService.assginmentList;
@@ -19,6 +22,18 @@ export class AssignmentsComponent {
   openDialog() {
     this.dialog.open(DialogAddOrderComponent);
 
+  }
+
+  changeTheStatus() {
+    let a = this.assignmentService.assignment.id;
+    let progress = document.getElementById('progress');
+    
+    
+
+    if(progress) {
+      this.selectedColor = 'red';
+    }
+    
   }
 
 }

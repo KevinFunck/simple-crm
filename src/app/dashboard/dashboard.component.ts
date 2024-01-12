@@ -11,6 +11,7 @@ export class DashboardComponent {
   noteNumber: number = this.noteService.noteList.length;
   userNumber: number = this.noteService.userList.length;
   mettingNumber: number = this.noteService.meetingList.length;
+  customersNumber:number = this.noteService.customerList.length;
   greeting: string = this.getGreeting();
   selectedTime: string | undefined;
 

@@ -2,47 +2,64 @@
 <mat-card>
     <mat-card-content>
         <table class="user-table">
-            <tr >
-                <th>Good</th><th>{{this.greeting}}</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </table>
-    </mat-card-content>
-</mat-card>
-
-<mat-card class="noteNumber">
-    <mat-card-content>
-        <table class="user-table">
             <tr>
-                <th>Notes</th>
-                <th>{{this.noteNumber}}</th>
+                <th>Good</th>
+                <th>{{this.greeting}}</th>
+                <th></th>
                 <th></th>
             </tr>
         </table>
     </mat-card-content>
 </mat-card>
+<div class="numbers">
+    <div>
+        <mat-card class="noteNumber">
+            <mat-card-content>
+                <table class="user-table">
+                    <tr>
+                        <th>Notes</th>
+                        <th>{{this.noteNumber}}</th>
+                        <th></th>
+                    </tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
 
-<mat-card class="noteNumber">
-    <mat-card-content>
-        <table class="user-table">
-            <tr >
-                <th>User</th>
-                <th>{{this.userNumber}}</th>
-                <th></th>
-            </tr>
-        </table>
-    </mat-card-content>
-</mat-card>
+        <mat-card class="noteNumber">
+            <mat-card-content>
+                <table class="user-table">
+                    <tr>
+                        <th>User</th>
+                        <th>{{this.userNumber}}</th>
+                        <th></th>
+                    </tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div>
+        <mat-card class="noteNumber">
+            <mat-card-content>
+                <table class="user-table">
+                    <tr>
+                        <th>Meetings</th>
+                        <th>{{this.mettingNumber}}</th>
+                        <th></th>
+                    </tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
 
-<mat-card class="noteNumber">
-    <mat-card-content>
-        <table class="user-table">
-            <tr >
-                <th>Meetings</th>
-                <th>{{this.mettingNumber}}</th>
-                <th></th>
-            </tr>
-        </table>
-    </mat-card-content>
-</mat-card>
+        <mat-card class="noteNumber">
+            <mat-card-content>
+                <table class="user-table">
+                    <tr>
+                        <th>Customers</th>
+                        <th>{{this.customersNumber}}</th>
+                        <th></th>
+                    </tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

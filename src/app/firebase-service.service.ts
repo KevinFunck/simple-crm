@@ -11,12 +11,12 @@ import { User } from 'src/models/user.class';
   providedIn: 'root'
 })
 export class FirebaseServiceService {
-  loading:boolean = false;
+  loading: boolean = false;
   firestore: Firestore = inject(Firestore);
   user: User = new User();
   note: Note = new Note();
   meeting: Meeting = new Meeting();
-  customer: Customer= new Customer();
+  customer: Customer = new Customer();
   assignment: Assignment = new Assignment();
   assginmentList: any = [];
   userList: any = [];
@@ -34,9 +34,9 @@ export class FirebaseServiceService {
   dbc;
   dba;
 
- 
+
   constructor() {
-    this.unsubListU = this.subUsersList(); 
+    this.unsubListU = this.subUsersList();
     this.unsubList = this.subNotesList();
     this.unsubListM = this.subMeetingList();
     this.unsubListC = this.subCustomersList();
@@ -48,130 +48,130 @@ export class FirebaseServiceService {
     this.dba = collection(this.firestore, 'assignment');
   }
 
-  subUsersList(){
-    return onSnapshot(this.getUserRef(), (list) =>{
+  subUsersList() {
+    return onSnapshot(this.getUserRef(), (list) => {
       this.userList = [];
       list.forEach(element => {
         this.userList.push(this.setUserObject(element.data(), element.id));
       });
-      if(this.userList.length >= 2){
-      this.userList.sort((a:any, b:any) => {
-        if (a.firstName < b.firstName) {
-          return -1;
-        }
-        if (a.firstName > b.firstName) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+      if (this.userList.length >= 2) {
+        this.userList.sort((a: any, b: any) => {
+          if (a.firstName < b.firstName) {
+            return -1;
+          }
+          if (a.firstName > b.firstName) {
+            return 1;
+          }
+          return 0;
+        });
+      }
     })
   }
 
-  
-  
-  subNotesList(){
-    return onSnapshot(this.getNoteRef(), (list) =>{
+
+
+  subNotesList() {
+    return onSnapshot(this.getNoteRef(), (list) => {
       this.noteList = [];
       list.forEach(element => {
         this.noteList.push(this.setNoteObject(element.data(), element.id));
 
       });
-      if(this.noteList.length >= 2){
-      this.noteList.sort((a:any, b:any) => {
-        if (a.title < b.title) {
-          return -1;
-        }
-        if (a.title > b.title) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+      if (this.noteList.length >= 2) {
+        this.noteList.sort((a: any, b: any) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        });
+      }
     })
   }
 
-  subAssginmentList(){
-    return onSnapshot(this.getAssignmentRef(), (list) =>{
+  subAssginmentList() {
+    return onSnapshot(this.getAssignmentRef(), (list) => {
       this.assginmentList = [];
       list.forEach(element => {
         this.assginmentList.push(this.setAssignmentObject(element.data(), element.id));
 
       });
-      if(this.assginmentList.length >= 2){
-      this.assginmentList.sort((a:any, b:any) => {
-        if (a.title < b.title) {
-          return -1;
-        }
-        if (a.title > b.title) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+      if (this.assginmentList.length >= 2) {
+        this.assginmentList.sort((a: any, b: any) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        });
+      }
     })
   }
   //The subMeetingList function subscribes to real-time updates of a meeting list from 
   //a Firestore database, updates the local this.meetingList with the received data, and sorts it alphabetically by title if the list contains two or more elements.
-  subMeetingList(){
-    return onSnapshot(this.getMeetingRef(), (list) =>{
+  subMeetingList() {
+    return onSnapshot(this.getMeetingRef(), (list) => {
       this.meetingList = [];
       list.forEach(element => {
         this.meetingList.push(this.setMeetingObject(element.data(), element.id));
         console.log(this.meeting);
       });
-      if(this.meetingList.length >= 2){
-      this.meetingList.sort((a:any, b:any) => {
-        if (a.title < b.title) {
-          return -1;
-        }
-        if (a.title > b.title) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+      if (this.meetingList.length >= 2) {
+        this.meetingList.sort((a: any, b: any) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        });
+      }
     })
   }
 
-  subCustomersList(){
-    return onSnapshot(this.getCustomerRef(), (list) =>{
+  subCustomersList() {
+    return onSnapshot(this.getCustomerRef(), (list) => {
       this.customerList = [];
       list.forEach(element => {
-        this.customerList.push(this.setCustomerObject(element.data(), element.id));    
+        this.customerList.push(this.setCustomerObject(element.data(), element.id));
       });
-      if(this.customerList.length >= 2){
-      this.customerList.sort((a:any, b:any) => {
-        if (a.companyName < b.companyName) {
-          return -1;
-        }
-        if (a.companyName > b.companyName) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+      if (this.customerList.length >= 2) {
+        this.customerList.sort((a: any, b: any) => {
+          if (a.companyName < b.companyName) {
+            return -1;
+          }
+          if (a.companyName > b.companyName) {
+            return 1;
+          }
+          return 0;
+        });
+      }
     })
   }
 
-  setMeetingObject(obj:any, id:string) {
+  setMeetingObject(obj: any, id: string) {
     return {
       id: id || "",
       meeting: obj.meeting || "",
-      date : obj.date  || "", 
-      time: obj.time || ""  
+      date: obj.date || "",
+      time: obj.time || ""
     }
   }
 
-  setNoteObject(obj:any, id:string) {
+  setNoteObject(obj: any, id: string) {
     return {
       id: id || "",
       title: obj.title || "",
-      description : obj.description  || "",
+      description: obj.description || "",
     }
   }
 
-  setUserObject(obj:any, id:string) {
+  setUserObject(obj: any, id: string) {
     return {
       id: id || "",
       firstName: obj.firstName || "",
@@ -184,7 +184,7 @@ export class FirebaseServiceService {
     }
   }
 
-  setCustomerObject(obj:any, id:string) {
+  setCustomerObject(obj: any, id: string) {
     return {
       id: id || "",
       companyName: obj.companyName || "",
@@ -198,7 +198,7 @@ export class FirebaseServiceService {
     }
   }
 
-  setAssignmentObject(obj:any, id:string) {
+  setAssignmentObject(obj: any, id: string) {
     return {
       id: id || "",
       assignmentName: obj.assignmentName || "",
@@ -214,23 +214,23 @@ export class FirebaseServiceService {
   }
 
   saveUser() {
-    addDoc(this.dbu, this.user.toJSON())   
+    addDoc(this.dbu, this.user.toJSON())
   }
 
   saveCustomer() {
-    addDoc(this.dbc, this.customer.toJSON())   
+    addDoc(this.dbc, this.customer.toJSON())
     console.log(this.customer);
   }
 
   saveNote() {
-    addDoc(this.db, this.note.toJSON()) 
+    addDoc(this.db, this.note.toJSON())
   }
 
   saveOrder() {
-    addDoc(this.dba, this.assignment.toJSON()) 
+    addDoc(this.dba, this.assignment.toJSON())
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.unsubList();
     this.unsubListM();
     this.unsubListU();
@@ -238,25 +238,35 @@ export class FirebaseServiceService {
     this.unsubListA();
   }
 
-  getNoteRef(){
+  getNoteRef() {
     return collection(this.firestore, 'notes');
-   }
+  }
 
-   getCustomerRef(){
+  getCustomerRef() {
     return collection(this.firestore, 'customers');
-   }
-  
-  getUserRef(){
-   return collection(this.firestore, 'users');
   }
 
-   getMeetingRef(){
-   return collection(this.firestore, 'meetings');
+  getUserRef() {
+    return collection(this.firestore, 'users');
   }
 
-  getAssignmentRef(){
+  getMeetingRef() {
+    return collection(this.firestore, 'meetings');
+  }
+
+  getAssignmentRef() {
     return collection(this.firestore, 'assignment');
-   }
+  }
 
- 
+  getSingleRef(){
+    return doc(collection(this.firestore, 'users'),this.user.id);
+  }
+
+  async saveEditUser(){
+    this.loading = true;
+    await updateDoc(this.getSingleRef(), JSON.parse(JSON.stringify(this.user)));
+  
+  }
+
+
 }

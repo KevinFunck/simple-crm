@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Firestore } from '@angular/fire/firestore';
-import {collection, addDoc, doc,getDoc,onSnapshot,updateDoc} from "firebase/firestore"; 
+import { Component} from '@angular/core';
+
+import { FirebaseServiceService } from '../firebase-service.service';
+import { User } from 'src/models/user.class';
 
 
 @Component({
@@ -10,21 +10,26 @@ import {collection, addDoc, doc,getDoc,onSnapshot,updateDoc} from "firebase/fire
   styleUrls: ['./dialog-edit-address.component.scss']
 })
 export class DialogEditAddressComponent {
-  user: any;
-  loading: boolean = false;
-  firestore: Firestore = inject(Firestore);
-
-  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>){}
-
-  async saveUser(){
-    this.loading = true;
-    await updateDoc(this.getSingleRef(), JSON.parse(JSON.stringify(this.user))).then(() =>{this.loading = false; this.dialogRef.close()});
   
+  street:string = '';
+  zipCode:string = '';
+  city:string = '';
+  loading: boolean = false;
+  user: User = new User();
+
+
+  constructor(private userService: FirebaseServiceService){}
+
+  saveEditUser() {
+    this.userService.user.street = this.street;
+    this.userService.user.zipCode = this.zipCode;
+    this.userService.user.city = this.city;
+    this.userService.saveEditUser;
+
   }
 
-  getSingleRef(){
-    return doc(collection(this.firestore, 'users'),this.user.id);
-  }
+
+ 
 }
 
 

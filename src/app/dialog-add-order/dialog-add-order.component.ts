@@ -14,7 +14,9 @@ export class DialogAddOrderComponent {
   endDate!:Date;
   assignmentName:string = '';
   assignmentInfo:string = '';
-  salesVolume:string = '';
+  salesVolume:any = '';
+ 
+ 
 
   constructor(private orderService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddOrderComponent>) {}
 
@@ -30,5 +32,7 @@ export class DialogAddOrderComponent {
     this.orderService.saveOrder();
     this.dialogRef.close(); 
   }
+
+
 
 }

@@ -41,6 +41,10 @@ import { DialogEditCustomerAddressComponent } from './dialog-edit-customer-addre
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { DialogAddOrderComponent } from './dialog-add-order/dialog-add-order.component';
 import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
+import { ChartComponent } from './chart/chart.component';
+import { NgChartsModule } from 'ng2-charts';
+
+
 
 
 
@@ -72,7 +76,8 @@ import { AssignmentDetailComponent } from './assignment-detail/assignment-detail
     DialogEditCustomerAddressComponent,
     AssignmentsComponent,
     DialogAddOrderComponent,
-    AssignmentDetailComponent
+    AssignmentDetailComponent,
+    ChartComponent
     
    
 
@@ -99,6 +104,10 @@ import { AssignmentDetailComponent } from './assignment-detail/assignment-detail
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     NgbModule,
+    NgChartsModule,
+    
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

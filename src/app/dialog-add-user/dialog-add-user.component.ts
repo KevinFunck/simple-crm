@@ -21,7 +21,6 @@ export class DialogAddUserComponent {
   constructor(private userService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddUserComponent>) {  
   }
 
-
   saveUser() {
     this.userService.user.firstName = this.firstName;
     this.userService.user.lastName = this.lastName;

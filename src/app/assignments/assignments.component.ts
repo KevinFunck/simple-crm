@@ -10,9 +10,21 @@ import { FirebaseServiceService } from '../firebase-service.service';
 })
 export class AssignmentsComponent {
   selectedColor: any;
+  number:number = 0;
+  
 
-  constructor(private assignmentService: FirebaseServiceService,public dialog: MatDialog) {
-    
+
+  constructor(private assignmentService: FirebaseServiceService, public dialog: MatDialog) {
+    this.calculater();
+
+  }
+
+  calculater() {
+    let assginmentsales = this.assignmentService.assginmentList;
+   for(const salesVolume of assginmentsales) {
+    this.number +=  salesVolume;
+   }
+   console.log(this.number);
   }
 
   getlist() {
@@ -24,16 +36,30 @@ export class AssignmentsComponent {
 
   }
 
-  changeTheStatus() {
-    let a = this.assignmentService.assignment.id;
+  changeTheStatusToProgress() {
     let progress = document.getElementById('progress');
-    
-    
 
-    if(progress) {
-      this.selectedColor = 'red';
+    if (progress) {
+      this.selectedColor = 'rgb(137, 242, 104)';
+      
     }
-    
+  }
+
+  changeTheStatusToFinish() {
+    let finish = document.getElementById('finish');
+
+    if (finish) {
+      this.selectedColor = 'rgb(135, 232, 226)';
+    }
+
+  }
+
+  changeTheStatusToCreated() {
+    let created = document.getElementById('created');
+
+    if (created) {
+      this.selectedColor = 'white';
+    }
   }
 
 }

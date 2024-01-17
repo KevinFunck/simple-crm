@@ -1,5 +1,4 @@
 import { Component} from '@angular/core';
-
 import { FirebaseServiceService } from '../firebase-service.service';
 import { User } from 'src/models/user.class';
 

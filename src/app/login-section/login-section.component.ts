@@ -18,4 +18,8 @@ export class LoginSectionComponent {
     this.dialog.open(DialogCreateAcoountComponent);
   }
 
+  guest() {
+    document.getElementById('log')?.classList.add('d-none');
+  }
+
 }

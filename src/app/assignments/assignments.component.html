@@ -4,10 +4,10 @@
         <table class="user-table">
             <tr>
                 <th>Assignment name</th>
-                <th>Start date</th>ng serve 
+                <th>Start date</th>
                 <th>End date</th>
             </tr>
-            <tr [style.background]="selectedColor"  *ngFor="let Assignment of getlist()" [routerLink]="['customers/:id/:assignment',Assignment.id]">
+            <tr [style.background]="selectedColor"  *ngFor="let Assignment of getlist()" [routerLink]="['/assignment',Assignment.id]">
                 <td>{{Assignment.assignmentName}}</td>
                 <td>{{Assignment.startDate | date: 'dd-MM-yyyy'}}</td>
                 <td>{{Assignment.endDate | date: 'dd-MM-yyyy'}}</td>

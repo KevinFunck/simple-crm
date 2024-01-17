@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'note', component : NoteComponent},
   {path: 'calender', component : CalenderComponent},
   {path: 'assignment', component : AssignmentsComponent},
-  {path: 'customers/:id/:assignment', component : AssignmentDetailComponent}
+  {path: 'assignment/:id', component : AssignmentDetailComponent}
 ];
 
 @NgModule({

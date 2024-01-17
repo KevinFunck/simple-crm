@@ -1,1 +1,16 @@
-<p>assignment-detail works!</p>
+<h1>Assignment detail</h1>
+<mat-card class="addres-card">
+    <button mat-icon-button [matMenuTriggerFor]="addresMenu" class="button">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #addresMenu="matMenu">
+        <button mat-menu-item>Edit</button>
+    </mat-menu>
+
+    <mat-card-content>
+        <p>{{Assignment.assignmentName}}</p>
+        <b>Start date:</b><p>{{Assignment.startDate | date: 'dd-MM-yyyy'}}</p>
+        <b>End date:</b><p>{{Assignment.endDate | date: 'dd-MM-yyyy'}}</p>
+        <p>{{Assignment.assignmentInfo}}</p>
+    </mat-card-content>
+</mat-card>

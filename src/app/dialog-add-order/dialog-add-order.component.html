@@ -25,7 +25,9 @@
         <p>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Sales volume $</mat-label>
-                <input [disabled]="loading" [(ngModel)]="salesVolume" matInput placeholder="Sales volume">
+                <input  type="number" [disabled]="loading" [(ngModel)]="salesVolume" matInput placeholder="Sales volume">
+                <span matTextPrefix>$&nbsp;</span>
+
             </mat-form-field>
         </p>
         <p>

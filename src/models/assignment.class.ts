@@ -3,7 +3,7 @@ export class Assignment {
     assignmentName: string;
     startDate: any;
     endDate: any;
-    salesVolume: any;
+    salesVolume: number;
     assignmentInfo: string;
   
 

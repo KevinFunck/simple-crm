@@ -14,7 +14,7 @@ export class DialogAddOrderComponent {
   endDate!:Date;
   assignmentName:string = '';
   assignmentInfo:string = '';
-  salesVolume:any = '';
+  salesVolume:number = 0;
  
  
 

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { DialogAddMeetingComponent } from '../dialog-add-meeting/dialog-add-meeting.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Firestore } from '@angular/fire/firestore';
@@ -13,11 +13,12 @@ import { FirebaseServiceService } from '../firebase-service.service';
 
 })
 export class CalenderComponent {
-date: any;
+  selected:Date = this.meetingService.meeting.MeetingDate;
 
 
 
   constructor(private meetingService: FirebaseServiceService, public dialog: MatDialog) {
+  
   }
 
   getlist() {
@@ -27,6 +28,9 @@ date: any;
   openDialog() {
     this.dialog.open(DialogAddMeetingComponent);
   }
+
+
+  
 
 
 

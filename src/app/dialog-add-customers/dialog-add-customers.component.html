@@ -32,7 +32,7 @@
             <p>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>E-mail</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="email" matInput
+                    <input type="email" [disabled]="loading" [(ngModel)]="email" matInput
                         placeholder="E-mail">
                 </mat-form-field>
             </p>
@@ -42,7 +42,7 @@
             <p>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Phone</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="phone" matInput
+                    <input type="tel" [disabled]="loading" [(ngModel)]="phone" matInput
                         placeholder="Phone">
                 </mat-form-field>
             </p>
@@ -62,7 +62,7 @@
             <p>
                 <mat-form-field appearance="outline" class="mr-16">
                     <mat-label>Zip code</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="zipCode" matInput
+                    <input type="number" [disabled]="loading" [(ngModel)]="zipCode" matInput
                         placeholder="Zip code">
                 </mat-form-field>
             </p>

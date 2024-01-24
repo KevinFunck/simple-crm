@@ -1,42 +1,39 @@
-<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-<h1 mat-dialog-title>Add Meeting</h1>
-<div>
-    <p class="inputfield over-100-div">
-        <mat-form-field appearance="outline" class="max-width">
-            <mat-label>Meeting</mat-label>
-            <input [(ngModel)]="meeting" matInput placeholder="Meeting">
-        </mat-form-field>
-    </p>
-</div>
+<div class="dialog-container">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
-<div>
-    <mat-form-field appearance="outline" class="example-form-field max-width">
-        <mat-label>Date</mat-label>
-        <input [(ngModel)]="date" [disabled]="loading" matInput
-            [matDatepicker]="datepicker">
-        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-            <mat-datepicker-actions>
-                <button mat-button matDatepickerCancel>Cancel</button>
-                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-            </mat-datepicker-actions>
-        </mat-datepicker>
-    </mat-form-field>
-</div>
+    <h1 mat-dialog-title>Add meeting</h1>
+    <div mat-dialog-content>
 
-<div>
-    <p class="inputfield over-100-div">
-        <mat-form-field appearance="outline" class="max-width">
-            <mat-label>Time</mat-label>
-            <input [(ngModel)]="time" placeholder="Time">
-        </mat-form-field>
-    </p>
-</div>
+        <p>
+            <mat-form-field class="mr-16" appearance="outline" class="full-width">
+                <mat-label>Meeting name</mat-label>
+                <input [disabled]="loading" [(ngModel)]="meeting" matInput placeholder="Assignment name">
+            </mat-form-field>
+        </p>
 
+        <div>
+            <p>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Date</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="MeetingDate" matInput placeholder="Birth Date" [matDatepicker]="picker2">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                </mat-form-field>
+            </p>
+        </div>
 
-<div mat-dialog-actions>
-    <div class="button-center">
-        <button (click)="dialogRef.close()" mat-button>Cancel</button>
-        <button (click)="saveMeeting()" mat-button cdkFocusInitial>Save</button>
+        <p>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Time</mat-label>
+                <input  type="time" [disabled]="loading" [(ngModel)]="MeetingTime" matInput placeholder="Sales volume">
+                
+            </mat-form-field>
+        </p>
+      
+
+    </div>
+    <div mat-dialog-actions>
+        <button [disabled]="loading"  mat-button>Cancel</button>
+        <button (click)="saveMeeting()" [disabled]="loading" mat-button cdkFocusInitial>Save</button>
     </div>
 </div>

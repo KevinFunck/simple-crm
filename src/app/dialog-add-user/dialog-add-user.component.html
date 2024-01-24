@@ -7,13 +7,13 @@
             <p>
                 <mat-form-field class="mr-16" appearance="outline">
                     <mat-label>First Name</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="firstName" matInput placeholder="First Name">
+                    <input type="name" [disabled]="loading" [(ngModel)]="firstName" matInput placeholder="First Name">
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Last Name</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="lastName" matInput placeholder="Last Name">
+                    <input type="name" [disabled]="loading" [(ngModel)]="lastName" matInput placeholder="Last Name">
                 </mat-form-field>
             </p>
         </div>
@@ -22,7 +22,7 @@
             <p>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>E-mail</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="email" matInput placeholder="E-mail"> 
+                    <input type="email" [disabled]="loading" [(ngModel)]="email" matInput placeholder="E-mail"> 
                 </mat-form-field>
             </p>
         </div>
@@ -51,7 +51,7 @@
             <p>
                 <mat-form-field appearance="outline" class="mr-16">
                     <mat-label>Zip code</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="zipCode" matInput placeholder="Zip code">
+                    <input type="number" [disabled]="loading" [(ngModel)]="zipCode" matInput placeholder="Zip code">
                 </mat-form-field>
             </p>
             <p>

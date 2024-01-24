@@ -1,24 +1,24 @@
 export class Meeting {
     id?: string;
     meeting:string;
-    date:any;
-    time:any;
+    MeetingDate:any;
+    MeetingTime:any;
 
   
 
     constructor(obj?: any) {
         this.id = obj ? obj.id : '';
         this.meeting = obj ? obj.title : '';
-        this.date = obj ? obj.description : '';
-        this.time = obj ? obj.description : '';
+        this.MeetingDate = obj ? obj.description : '';
+        this.MeetingTime = obj ? obj.description : '';
         
     }
 
     public toJSON() {
         return {
             meeting: this.meeting,
-            date: this.date,
-            time: this.time
+            MeetingDate: this.MeetingDate,
+            MeetingTime: this.MeetingTime
         }
     }
 }

@@ -1,6 +1,6 @@
 
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from '@angular/fire/firestore';
 import { Assignment } from 'src/models/assignment.class';
 import { Customer } from 'src/models/customer.class';
 import { Meeting } from 'src/models/meeting.class';
@@ -122,7 +122,7 @@ export class FirebaseServiceService {
       });
       if (this.meetingList.length >= 2) {
         this.meetingList.sort((a: any, b: any) => {
-          if (a.title < b.title) {
+          if (a.MettingDate < b.MeetingDate) {
             return -1;
           }
           if (a.title > b.title) {
@@ -158,8 +158,8 @@ export class FirebaseServiceService {
     return {
       id: id || "",
       meeting: obj.meeting || "",
-      date: obj.date || "",
-      time: obj.time || ""
+      MeetingDate: obj.MeetingDate || "",
+      MeetingTime: obj.MeetingTime || ""
     }
   }
 
@@ -258,15 +258,24 @@ export class FirebaseServiceService {
     return collection(this.firestore, 'assignment');
   }
 
-  getSingleRef(){
-    return doc(collection(this.firestore, 'users'),this.user.id);
+  getAssignmentsByCustomerId(customerId: string) {
+    const AssignmentsCollRef = collection(this.firestore, 'assignment');
+    // Create a query against the collection.
+    const q = query(AssignmentsCollRef, where("customerId", "==", customerId));
+    return q;
   }
 
-  async saveEditUser(){
+  getSingleRef() {
+    return doc(collection(this.firestore, 'users'), this.user.id);
+  }
+
+  async saveEditUser() {
     this.loading = true;
     await updateDoc(this.getSingleRef(), JSON.parse(JSON.stringify(this.user)));
-  
+
   }
+
+
 
 
 }

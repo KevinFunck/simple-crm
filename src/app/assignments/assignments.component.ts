@@ -10,30 +10,21 @@ import { FirebaseServiceService } from '../firebase-service.service';
 })
 export class AssignmentsComponent {
   selectedColor: any;
-  number:number = 0;
+  sale:Number = 0;
+ 
 
   
 
 
   constructor(private assignmentService: FirebaseServiceService, public dialog: MatDialog) {
     this.calculater();
-   
- 
-
-  }
-
-  ngOnInit() {
-    
   }
 
   calculater() {
     for(let Assignment of this.getlist()) {
-      this.number += Assignment.salesVolume;
+      this.sale += Assignment.salesVolume;
     }
-    console.log(this.number);
   }
-
-  
 
   getlist() {
     return this.assignmentService.assginmentList;

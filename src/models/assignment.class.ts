@@ -3,8 +3,9 @@ export class Assignment {
     assignmentName: string;
     startDate: any;
     endDate: any;
-    salesVolume: number;
+    salesVolume: number = 0;
     assignmentInfo: string;
+    customerId:string
   
 
     constructor(obj?: any) {
@@ -12,8 +13,9 @@ export class Assignment {
         this.assignmentName = obj ? obj.companyName : '';
         this.startDate = obj ? obj.startDate : '';
         this.endDate = obj ? obj.endDate : '';
-        this.salesVolume = obj ? obj.endVolume : '';
+        this.salesVolume = obj ? obj.endVolume : 0;
         this.assignmentInfo = obj ? obj.assignmentInfo : '';
+        this.customerId = obj? obj.customerId : '';
     }
 
 
@@ -24,6 +26,7 @@ export class Assignment {
             endDate: this.endDate,
             salesVolume: this.salesVolume,
             assignemtInfo: this.assignmentInfo,
+            customerId: this.customerId
 
         }
     }

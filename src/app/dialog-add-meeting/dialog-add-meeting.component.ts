@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FirebaseServiceService } from '../firebase-service.service';
-import { Time } from '@angular/common';
+
 
 @Component({
   selector: 'app-dialog-add-meeting',
@@ -10,8 +10,8 @@ import { Time } from '@angular/common';
 })
 export class DialogAddMeetingComponent {
   loading:boolean = false;
-  time!:any;
-  date!: Date;
+  MeetingTime:any;
+  MeetingDate:any;
   meeting:string = '';
 
  
@@ -20,8 +20,8 @@ export class DialogAddMeetingComponent {
 
   saveMeeting() {
     this.meetingService.meeting.meeting = this.meeting;
-    this.meetingService.meeting.date = this.date.getTime();
-    this.meetingService.meeting.time = this.time.getTime();
+    this.meetingService.meeting.MeetingDate = this.MeetingDate.getTime();
+    this.meetingService.meeting.MeetingTime = this.MeetingTime;
     this.meetingService.saveMeeting();
     this.dialogRef.close();
   }

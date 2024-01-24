@@ -16,6 +16,10 @@ export class DialogAddOrderComponent {
   assignmentInfo:string = '';
   salesVolume:number = 0;
  
+  
+  
+ 
+ 
  
 
   constructor(private orderService: FirebaseServiceService,public dialogRef: MatDialogRef<DialogAddOrderComponent>) {}
@@ -29,6 +33,7 @@ export class DialogAddOrderComponent {
     this.orderService.assignment.salesVolume = this.salesVolume;
     this.orderService.assignment.startDate = this.startDate.getTime();
     this.orderService.assignment.endDate = this.endDate.getTime();
+    this.orderService.getAssignmentsByCustomerId;
     this.orderService.saveOrder();
     this.dialogRef.close(); 
   }
